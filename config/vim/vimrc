@@ -138,7 +138,8 @@ nmap <leader>s <ESC>:FixWhitespace<CR>
 " run flake8 for python code
 nmap <leader>f <ESC>:PyFlake<CR>
 vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
-" let g:flake8_ignore="E501" " ignore errors:
+let g:PyFlakeCheckers = 'pep8'
+" let g:PyFlakeDisabledMessages = 'E501'
 
 " qucick delete empty line
 nmap <leader>d <ESC>:g/^$/d<CR>
