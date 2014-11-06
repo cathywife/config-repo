@@ -265,8 +265,9 @@ au BufNewFile,BufRead *.yuml set filetype=yuml
 ""  plugins settings
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Nerd
-let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
-let NERDCompactSexyComs=1   " 多行注释时样子更好看
+let NERDSpaceDelims=1               " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1           " 多行注释时样子更好看
+let NERDTreeIgnore = ['\.pyc$']     " 忽略pyc文件
 
 "airline-line
 if &term=="xterm"
