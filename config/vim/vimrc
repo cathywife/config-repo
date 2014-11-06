@@ -34,6 +34,8 @@ Bundle 'vim-scripts/TaskList.vim'
 Bundle 'lepture/vim-jinja'
 Bundle 'andviro/flake8-vim'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
+
 
 
 " Bundle ''
