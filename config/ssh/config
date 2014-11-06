@@ -1,0 +1,51 @@
+# 不保存known_hosts
+UserKnownHostsFile /dev/null
+# 不验证,免输入yes
+StrictHostKeyChecking no
+# 保持TCP长链接
+TCPKeepAlive yes
+# 默认key文件
+IdentityFile="~/.ssh/22.pem"
+
+# idc openstack
+Host 10.22.203.*
+Port 8022
+User datayes
+
+# idc openstack(vms)
+Host 10.22.129.*
+Port 8022
+User root
+
+# idc mercury-production
+Host 10.22.133.*
+Port 8022
+User datayes
+
+# idc mercury-staging
+Host 10.22.132.*
+Port 8022
+User datayes
+
+# idc ironman
+Host 10.22.220.*
+Port 8022
+User root
+
+# lib openstack
+Host 10.20.134.*
+Port 22
+User root
+
+# lib
+Host 10.20.*.*
+Port 22
+User datayes
+
+
+########### Cus-server ###########
+
+Host ironman-server
+HostName 10.20.210.100
+Port 22
+User ubuntu

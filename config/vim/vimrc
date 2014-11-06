@@ -1,0 +1,531 @@
+"##############################################
+" 针对该.vimrc配置的说明
+" basic settings: 主要是一些外观之类的设置，配有中文注释，可按需修改
+" key bindings: 快捷键的配置.这个则更多的需要按照个人使用习惯来处理
+" ......
+" 其余的杂项则基本可以不用设置
+"##############################################
+
+let g:Author="Elvis"
+let g:Email="elvis@lnmpy.com && xiaofeng.hong@datayes.com"
+let g:Company="Datayes.Inc, Shanghai"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  basic settings（只有这段才有中文注释）
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Bundle 'scrooloose/nerdtree'
+Bundle 'Raimondi/delimitMate'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
+Bundle 'Valloric/MatchTagAlways'
+Bundle 'DataWraith/auto_mkdir'
+Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'vim-scripts/Marks-Browser'
+Bundle 'vim-scripts/TaskList.vim'
+Bundle 'lepture/vim-jinja'
+Bundle 'andviro/flake8-vim'
+Bundle 'Shougo/unite.vim'
+
+
+" Bundle ''
+" vim-scripts/notes.vim
+" vim-scripts/easytags.vim
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  basic settings（只有这段才有中文注释）
+"""""""""""""""""""""""""""""""""""""""""""""""""
+set number " 显示行号
+set background=dark " 背景颜色为深色
+set ruler " 显示光标位置
+set showmatch " 高亮显示匹配括号
+set hlsearch " 高亮搜索
+set showcmd " 在状态栏显示正在输入的命令
+set incsearch " 增量搜索
+set ignorecase " 搜索时忽略大小写
+set viminfo^=%  " 记录文件关闭时的信息
+set laststatus=2 " 总是显示状态栏
+let g:tlTokenList = ["FIXME", "TODO", "XXX", "NotImplemented"] " 将此文字作为高亮显示
+set history=200 " 设置命令历史大小
+set wildmenu " 打开Wild Menu
+set wildmode=longest:longest,full " 设置Wild Menu的匹配方式
+set wildignore=*.o,*~,*pyc,*class " 忽略编译后的文件
+set encoding=utf8 " 文件默认编码格式
+set fileencodings=utf-8,latin-1 " 自动判断文件的编码时尝试的顺序
+set nocompatible " 不兼容vi
+set nobackup " 关闭本分文件
+set fileformats=unix,dos,mac " 设置默认的文件类型
+set autoread " 当文件被外部修改时自动更新
+set pumheight=15 " 插入模式下弹出补全菜单的最大显示项目数
+" set completeopt=menu,preview " 代码提示的相关设置
+set backspace=eol,start,indent " 设定在插入状态用退格键和Delete键可以删除回车符,缩进等特殊字符
+set whichwrap+=<,>,h,l " 使左右移动键在行首或行尾可以移动到前一行或下一行
+set iskeyword+=_,$,@,%,#,- " 将这些字符作为关键字，带有这些符号的单词不换行
+set matchpairs=(:),{:},[:],<:> " 匹配括号的规则，增加针对html的<>
+set matchtime=2 " 延迟0.2s显示括号
+syntax enable " 语法高亮,这个默认是读取syntax.vim
+syntax on " 语法高亮,采用缺省值
+set confirm  " 退出未保存文件时提示
+color ron  " 颜色主题,有很多种,这里我选择颜色比较暗的
+filetype on " 侦测文件类型
+filetype plugin on " 载入类型插件
+filetype indent on " 载入文件类型对应的缩进文件
+set lazyredraw " 执行宏时不马上刷新屏幕
+set foldmethod=manual " 选择按照语法来进行折叠
+
+" 格式或缩进之类的设置
+set smarttab " 设置智能的tab
+set autoindent " 自动缩进
+set smartindent " 智能缩进
+set expandtab " 使用空格扩展tab
+set softtabstop=4 " 编辑时执行<tab>或<BackSpace>的时候,把<tab>作为空格的数目
+set tabstop=4 " tab的字符长度为4
+set shiftwidth=4 " 自动缩进长度为4
+set shiftround " 使用<<和>>时依据shiftwidth的长度设置
+
+highlight Pmenu    guibg=darkgrey  guifg=black " 代码提示框的颜色设置，普通选项的颜色
+highlight PmenuSel guibg=lightgrey guifg=black " 代码提示框的颜色设置，选中选项的颜色
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  key bindings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader=","
+let g:mapleader=","
+
+" shortcuts for save
+nmap <leader>w :w!<CR>
+
+" cd to opened file
+map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" set paste, and leave paste while complete paste
+map <leader>p <Esc>:set paste<CR>i
+au InsertLeave * if &paste == 1|set nopaste |endif
+
+" auto delete .netrwhist
+au VimLeave * if filereadable("~/.vim/.netrwhist")|call delete("~/.vim/.netrwhist")|endif
+
+" quick search in visual-mode
+vmap // y/<C-R>"<CR>
+vmap <leader>/ y/<C-R>"<CR>
+
+" quick run in visual-mode
+vmap <leader>e y<ESC>:! <C-R>"
+
+" quick run current line
+nmap <leader>e <ESC>:exec ':!'.getline('.')<CR>
+
+" qucick delete tail space
+nmap <leader>s <ESC>:FixWhitespace<CR>
+
+" run flake8 for python code
+nmap <leader>f <ESC>:PyFlake<CR>
+vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
+" let g:flake8_ignore="E501" " ignore errors:
+
+" qucick delete empty line
+nmap <leader>d <ESC>:g/^$/d<CR>
+
+" switch buffer
+map <leader><SPACE> <ESC>:Unite file<CR>
+map <SPACE> <ESC>:Unite buffer<CR>
+
+" remap the default keys
+map 0 ^
+map j gj
+map k gk
+
+" tabs shorcuts
+map tN :tabnew<CR>
+map to :tabonly<CR>
+map tc :tabclose<CR>
+map tn :tabn<CR>
+map tp :tabp<CR>
+map tm :tabmove
+
+" For chromebook's keyboard layout
+nmap <leader>f1 <F1>
+nmap <leader>f2 <F2>
+nmap <leader>f3 <F3>
+nmap <leader>f4 <F4>
+nmap <leader>f5 <F5>
+nmap <leader>f6 <F6>
+nmap <leader>f7 <F7>
+nmap <leader>f8 <F8>
+nmap <leader>f9 <F9>
+
+" Quickly Modify .vimrc
+nmap <F1> :e ~/.vimrc<CR>
+" Toggle NerdTree
+nmap <F2> :call NERDTreeToggleCurrentDir()<CR>
+imap <F2> <ESC>:call NERDTreeToggleCurrentDir()<CR>
+" Toggle Tagbar
+nmap <F3> :TagbarToggle<CR>
+imap <F3> <ESC>:TagbarToggle<CR>
+vmap <F3> <ESC>:TagbarToggle<CR>
+" Toggle Comment , <leader>ca will switch the delimiters
+nmap <F4> <leader>ci<CR>
+imap <F4> <ESC><leader>ci<CR>
+vmap <F4> <ESC><leader>ci<CR>
+" Add docxygen info (Currently Not Used)
+" map <F6> <ESC>:w<ESC><CR>:Dox<CR>
+" Add author info
+" map <F6> <ESC>:w<ESC><CR>:call InfoTitle()<CR>
+" Rediect the command to current window
+map <F6> <ESC>:$!
+" Toggle TaskList
+nmap <F7> <ESC>:TaskList<CR>
+imap <F7> <ESC>:TaskList<CR>
+vmap <F7> <ESC>:TaskList<CR>
+" Toggle MarksBrowser
+nmap <F8> <ESC>:MarksBrowser<CR>
+imap <F8> <ESC>:MarksBrowser<CR>
+vmap <F8> <ESC>:MarksBrowser<CR>
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" w!! to sudo & write a file
+cmap w!! w !sudo tee >/dev/null %
+
+
+"create undo file
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+if v:version >= 730
+    set undofile                " keep a persistent backup file
+    set undodir=/tmp/vimundo/
+endif
+
+
+"设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
+set t_te=
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  au settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" map keys for compile
+au FileType * call CompileByFileType()
+" add header for each file
+au BufNewFile * call AddMimeHeader()
+" auto reload modified .vimrc file
+au! BufWritePost .vimrc source $HOME/.vimrc
+" return to last edit position when opening files
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |   exe "normal! g`\"" | endif
+
+" change default filetypes
+au BufNewFile,BufRead *.pp set filetype=ruby
+au BufNewFile,BufRead *.md set filetype=markdown
+au BufNewFile,BufRead *.wsgi set filetype=python
+
+" Enable omni completion.
+au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+au FileType python setlocal omnifunc=pythoncomplete#Complete
+au FileType c setlocal omnifunc=ccomplete#Complete
+
+" overwrite default syntax
+au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
+au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
+au FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" set for the specified syntax
+au BufNewFile,BufRead *.yuml set filetype=yuml
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  plugins settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" Nerd
+let NERDSpaceDelims=1       " 让注释符与语句之间留一个空格
+let NERDCompactSexyComs=1   " 多行注释时样子更好看
+
+"airline-line
+if &term=="xterm"
+    set term=xterm-256color
+elseif &term=="linux"
+    set term=linux
+endif
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" ctags settings
+set tags+=~/.vim/tags/unix_tags
+set tags+=~/.vim/tags/stdcpp_tags
+set tags+=./tags,./../tags,./../../tags,./../../../tags
+
+" tagbar settings
+let g:tagbar_ctags_bin = 'ctags'
+let g:tagbar_width = 25
+
+" zen-coding settings
+let g:user_zen_expandabbr_key='<c-e>'
+let g:use_zen_complete_tag = 1
+
+" NerdTree settings
+let NERDTreeWinSize=20
+
+" cscope settings
+if has("cscope") && executable("cscope")
+  set csto=1
+  set cst
+  set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+  " add any database in current directory
+  function! CSadd()
+    set nocsverb
+    if filereadable("cscope.out")
+      cs add cscope.out
+    endif
+    set csverb
+  endfunction
+
+  au BufRead *.c,*.cpp,*.h call CSadd()
+
+  nmap css :cs find s <C-R>=expand("<cword>")<CR><CR>
+  nmap csg :cs find g <C-R>=expand("<cword>")<CR><CR>
+  nmap csd :cs find d <C-R>=expand("<cword>")<CR><CR>
+  nmap csc :cs find c <C-R>=expand("<cword>")<CR><CR>
+  nmap cst :cs find t <C-R>=expand("<cword>")<CR><CR>
+  nmap cse :cs find e <C-R>=expand("<cword>")<CR><CR>
+  nmap csf :cs find f <C-R>=expand("<cfile>")<CR><CR>
+  nmap csi :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+  nmap csn :lcd %:p:h<CR>:!my_cscope<CR>
+endif
+
+" better rainbow parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  functions settings
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" compile & run by detecting the filetype
+function! CompileByFileType()
+    if &filetype=="c"
+        map <F5> <ESC>:w<ESC><CR>:!gcc % -Wall -Werror -ggdb -o %.out && ./%.out
+    elseif &filetype=="cpp"
+        map <F5> <ESC>:w<ESC><CR>:!g++ % -Wall -Werror -ggdb -o %.out && ./%.out
+    elseif &filetype=="php"
+        map <F5> <ESC>:w<ESC><CR>:!php %
+    elseif &filetype=="python"
+        map <F5> <ESC>:w<ESC><CR>:!python %
+    elseif &filetype=="perl"
+        map <F5> <ESC>:w<ESC><CR>:!perl %
+    elseif &filetype=="java"
+        map <F5> <ESC>:w<ESC><CR>:!javac % && java %
+    elseif &filetype=="awk"
+        map <F5> <ESC>:w<ESC><CR>:!awk -f %
+    elseif &filetype=="sh"
+        map <F5> <ESC>:w<ESC><CR>:!./%
+    endif
+endfunction
+
+" compile & run by detecting the filetype
+function! AddMimeHeader()
+    if &filetype=="python"
+        call append(0,"#!/usr/bin/env python")
+        call append(1,"# -*- coding: utf-8 -*-")
+        call append(2,"")
+    elseif &filetype=="sh"
+        call append(0,"#!/usr/bin/env bash")
+        call append(1,"")
+    endif
+endfunction
+
+" Open the NerdTree in current file's dir
+function! NERDTreeToggleCurrentDir()
+    if exists("t:NERDTreeBufName")
+        NERDTreeToggle
+    else
+        try
+            NERDTree `=expand('%:h')`
+        catch /E121/
+            NERDTree `=getcwd()`
+        endtry
+    endif
+endfunction
+
+
+" Open with cflow chart
+au BufNewFile,BufRead *.cflow setf cflow
+function! OpenCflowChart()
+  silent! exe "!cflow % -o /tmp/elvis.cflow"
+  e /tmp/elvis.cflow
+endfunction
+
+" author info settings
+function! _AddTitle()
+    call append(0,"/* *****************************************************************************")
+    call append(1," * ")
+    call append(2," * Author   : ".g:Author)
+    call append(3," * Email    : ".g:Email)
+    call append(4," * Company  : ".g:Company)
+    call append(5," * ")
+    call append(6," * Modified : ".strftime("%Y-%m-%d %H:%M"))
+    call append(7," * Filename : ".expand("%:t"))
+    call append(8," * Desc     : ")
+    call append(9," * ")
+    call append(10," * *****************************************************************************/")
+    call append(11,"")
+    call append(12,"")
+    w!
+endfunction
+
+function! _AddTitle4Python()
+    call append(0,"#!/usr/bin/python")
+    call append(1,"# -*- coding: utf-8 -*-")
+    call append(2,"#  #############################################################################")
+    call append(3,"#")
+    call append(4,"# Author   : ".g:Author)
+    call append(5,"# Email    : ".g:Email)
+    call append(6,"# Company  : ".g:Company)
+    call append(7,"#")
+    call append(6,"# Modified : ".strftime("%Y-%m-%d %H:%M"))
+    call append(7,"# Filename : ".expand("%:t"))
+    call append(10,"# Desc     :")
+    call append(11,"#")
+    call append(12,"# #############################################################################/")
+    call append(13,"")
+    call append(14,"")
+    w!
+endfunction
+
+function! _UpdateTitle()
+    exec '/^\s\*\sModified\s:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M")@'
+    exec '/^\s\*\sFilename\s:/s@:.*$@\=": ".expand("%:t")@'
+    w!
+endfunction
+
+function! _UpdateTitle4Python()
+    exec '/^#\sModified\s:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M")@'
+    exec '/^#\sFilename\s:/s@:.*$@\=": ".expand("%:t")@'
+    w!
+endfunction
+
+function! InfoTitle()
+    if &filetype=="python"
+        call InfoTitle4Python()
+    elseif &filetype=="sh"
+        call InfoTitle4Python()
+    else
+        call InfoTitle4Default()
+    endif
+endfunction
+
+function! InfoTitle4Default()
+    let n=1
+    while n < 10
+        let line = getline(n)
+        if line =~ '^\s*\*\s.*Modified\s:.*$'
+            call _UpdateTitle()
+            return
+        endif
+        let n = n + 1
+    endwhile
+    call _AddTitle()
+endfunction
+
+function! InfoTitle4Python()
+    let n=1
+    while n < 10
+        let line = getline(n)
+        if line =~ '^\#\s.*Modified\s:.*$'
+            call _UpdateTitle4Python()
+            return
+        endif
+        let n = n + 1
+    endwhile
+    call _AddTitle4Python()
+endfunction
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  以下命令未设置，可根据自己需求自定义设置
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" set foldmethod=indent " 选择按照语法来进行折叠
+" set nowrapscan " 搜索到文件末尾时，不再回绕到文件首
+" set list " 显示制表符
+" set listchars=eol:$,tab:>-,nbsp:_ " 设置制表符
+" set scrolloff=0 " 使用H,L时的偏移行数
+" set noequalalways " 取消当打开或关闭每个窗口时均设置同样大小的设置
+" set lbr " 设置自动断行,使得词不会被跨行中断
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  一些tricks，不用设置，但也常用，可提高使用效率
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" set ft=html " 当打开一个空文件时，可以手动设置文件类型，由此就会高亮缩进等
+" 在comman或visual模式下输入<C-R>"，则直接粘贴刚刚复制过的内容
+" g<C-G> " 在一个文本里计算单词数
+" set noma (non modifiable) " 防止修改
+" set ro (Read Only) " 只读保护
+" mksession " 生成一个Session文件 (默认是Session.vim)
+" Vu : 转换选中的行（小写）
+" VU : 转换选中的行（大写）
+" g~~ : 反向转换
+" '. : 跳回最后编辑的行 (超有用)
+" `. : 同上，但是定位编辑点
+" <C-O> : 依次沿着你的跳转记录向回跳 (从最近的一次开始)
+" <C-I> : 依次沿着你的跳转记录向前跳
+" :b main : 前往含有main的buffer中 比如说 main.c
+" :e! : 打开未修改之前的文件
+" <C-X><C-F> :插入当前目录下的一个文件名到当前位置
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""
+""  临时的一些设置
+"""""""""""""""""""""""""""""""""""""""""""""""""
+" map <F9> <ESC>:w<CR><ESC>: make clean ; make
