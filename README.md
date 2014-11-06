@@ -7,23 +7,27 @@ elvis-config
     REPO_NAME=repo
     ROOT_PATH=~/._sys
     REPO_PATH=$ROOT_PATH/$REPO_NAME
-    
+
     if [ ! -d $ROOT_PATH ];
     then
         mkdir -p $ROOT_PATH
     fi
-    
+
     cd $ROOT_PATH
-    
+
     git clone https://github.com/elvis-macak/config-repo $REPO_NAME
-    
+
     ln -sf `readlink -f $REPO_PATH/config/vim` ~/.vim
     ln -sf `readlink -f $REPO_PATH/config/vim/vimrc` ~/.vimrc
-    
+
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+    vim +PluginInstall +qall
+
     echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
     echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
     .  ~/.bashrc
-    
+
     sudo ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` /etc/tmux.conf
 
 
@@ -46,18 +50,18 @@ elvis-config
     set sw=4
     set sr
     set term=xterm-256color
-    
+
     let g:tlTokenList = ["FIXME", "TODO", "XXX", "NotImplemented"]
     set matchpairs=(:),{:},[:],<:>
     let mapleader=","
     let g:mapleader=","
-    
+
     nmap <leader>w :w!<CR>
-    
+
     map 0 ^
     map j gj
     map k gk
-    
+
     map <C-j> <C-W>j
     map <C-k> <C-W>k
     map <C-h> <C-W>h
