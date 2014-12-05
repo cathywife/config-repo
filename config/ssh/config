@@ -17,6 +17,16 @@ Host 10.22.129.*
 Port 8022
 User root
 
+# idc openstack(vms)
+Host 10.22.130.*
+Port 8022
+User root
+
+# idc openstack test-bed
+Host 10.22.134.*
+Port 8022
+User datayes
+
 # idc mercury-production
 Host 10.22.133.*
 Port 8022
@@ -49,3 +59,8 @@ Host ironman-server
 HostName 10.20.210.100
 Port 22
 User ubuntu
+
+Host aliyun
+HostName 115.28.35.238
+Port 22
+User root

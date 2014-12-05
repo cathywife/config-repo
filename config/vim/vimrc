@@ -141,13 +141,13 @@ nmap <leader>s <ESC>:FixWhitespace<CR>
 nmap <leader>f <ESC>:PyFlake<CR>
 vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
 let g:PyFlakeCheckers = 'pep8'
-" let g:PyFlakeDisabledMessages = 'E501'
+let g:PyFlakeDisabledMessages = 'E266,E501'
 
 " qucick delete empty line
 nmap <leader>d <ESC>:g/^$/d<CR>
 
 " switch buffer
-map <leader><SPACE> <ESC>:Unite file<CR>
+map <leader><SPACE> <ESC>:Unite file_rec<CR>
 map <SPACE> <ESC>:Unite buffer<CR>
 
 " remap the default keys
