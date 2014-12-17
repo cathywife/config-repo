@@ -166,14 +166,15 @@ NewLine="\n"
 Jobs="\j"
 User="\u"
 Host="\h"
+FullHost="\H"
 
 
 # red color when root user
 if [ "`whoami`" = "root" ]; then
     PROMP=\#
-    USER=$BRed$User@$Host$Color_off
+    USER=$BRed$User@$FullHost$Color_off
 else
-    USER=$BBlack$User@$Host$Color_off
+    USER=$BBlack$User@$FullHost$Color_off
     PROMP=\$
 fi
 

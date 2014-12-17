@@ -114,6 +114,9 @@ let g:mapleader=","
 " shortcuts for save
 nmap <leader>w :w!<CR>
 
+" shortcuts for open buffer list
+nmap <leader>b :b
+
 " cd to opened file
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
 
