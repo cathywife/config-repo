@@ -158,25 +158,6 @@ map 0 ^
 map j gj
 map k gk
 
-" tabs shorcuts
-map tN :tabnew<CR>
-map to :tabonly<CR>
-map tc :tabclose<CR>
-map tn :tabn<CR>
-map tp :tabp<CR>
-map tm :tabmove
-
-" For chromebook's keyboard layout
-nmap <leader>f1 <F1>
-nmap <leader>f2 <F2>
-nmap <leader>f3 <F3>
-nmap <leader>f4 <F4>
-nmap <leader>f5 <F5>
-nmap <leader>f6 <F6>
-nmap <leader>f7 <F7>
-nmap <leader>f8 <F8>
-nmap <leader>f9 <F9>
-
 " Quickly Modify .vimrc
 nmap <F1> :e ~/.vimrc<CR>
 " Toggle NerdTree
@@ -245,6 +226,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |   exe "normal!
 au BufNewFile,BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.wsgi set filetype=python
+au BufNewFile,BufRead *.less set filetype=css
 
 " Enable omni completion.
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
