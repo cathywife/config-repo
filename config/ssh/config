@@ -4,53 +4,60 @@ UserKnownHostsFile /dev/null
 StrictHostKeyChecking no
 # 保持TCP长链接
 TCPKeepAlive yes
-# 默认key文件
-IdentityFile="~/.ssh/22.pem"
 
 # idc openstack
 Host 10.22.203.*
 Port 8022
 User datayes
+IdentityFile="~/.ssh/22.pem"
 
 # idc openstack(vms)
 Host 10.22.129.*
 Port 8022
 User root
+IdentityFile="~/.ssh/22.pem"
 
 # idc openstack(vms)
 Host 10.22.130.*
 Port 8022
 User root
+IdentityFile="~/.ssh/22.pem"
 
 # idc openstack test-bed
 Host 10.22.134.*
 Port 8022
 User datayes
+IdentityFile="~/.ssh/22.pem"
 
 # idc mercury-production
 Host 10.22.133.*
 Port 8022
 User datayes
+IdentityFile="~/.ssh/22.pem"
 
 # idc mercury-staging
 Host 10.22.132.*
 Port 8022
 User datayes
+IdentityFile="~/.ssh/22.pem"
 
 # idc ironman
 Host 10.22.220.*
 Port 8022
 User root
+IdentityFile="~/.ssh/22.pem"
 
 # lib openstack
 Host 10.20.134.*
 Port 22
 User root
+IdentityFile="~/.ssh/22.pem"
 
 # lib
 Host 10.20.*.*
 Port 22
 User datayes
+IdentityFile="~/.ssh/22.pem"
 
 
 ########### Cus-server ###########
@@ -64,3 +71,6 @@ Host aliyun
 HostName 115.28.35.238
 Port 22
 User root
+
+Host git.datayes.com
+HostName git.datayes.com
