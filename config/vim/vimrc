@@ -124,9 +124,6 @@ map <leader>cd :cd %:p:h<CR>:pwd<CR>
 map <leader>p <Esc>:set paste<CR>i
 au InsertLeave * if &paste == 1|set nopaste |endif
 
-" auto delete .netrwhist
-au VimLeave * if filereadable("~/.vim/.netrwhist")|call delete("~/.vim/.netrwhist")|endif
-
 " quick search in visual-mode
 vmap // y/<C-R>"<CR>
 vmap <leader>/ y/<C-R>"<CR>
