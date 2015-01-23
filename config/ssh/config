@@ -74,3 +74,8 @@ User root
 
 Host git.datayes.com
 HostName git.datayes.com
+
+Host vdi
+HostName 10.20.70.60
+Port 9002
+User elvis
