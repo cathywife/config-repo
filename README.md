@@ -6,8 +6,7 @@ elvis-config
 
     REPO_NAME=repo
     ROOT_PATH=~/._sys
-    REPO_PATH=$ROOT_PATH/$REPO_NAME
-
+    REPO_PATH=$ROOT_PATH/$REPO_NAME 
     if [ ! -d $ROOT_PATH ];
     then
         mkdir -p $ROOT_PATH
@@ -29,6 +28,8 @@ elvis-config
     .  ~/.bashrc
 
     sudo ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` /etc/tmux.conf
+
+    ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
 
 
 简化的vimrc配置,可用于服务器中,偏大众化,不会影响到他人
@@ -66,3 +67,27 @@ elvis-config
     map <C-k> <C-W>k
     map <C-h> <C-W>h
     map <C-l> <C-W>l
+
+个人的git配置,主要是颜色高亮和一些默认工具的配置
+
+    [user]
+        email = elvis@lnmpy.com
+        name = elvis
+    [credential]
+        # set credential for keeping a week
+        helper = cache --timeout 604800
+    [core]
+        editor = vim
+    [alias]
+        st = status
+        ci = commit -v
+    [sequence]
+        editor = vim
+    [merge]
+        tool = vimdiff
+    [color]
+        status = auto
+        branch = auto
+        interactive = auto
+        diff= auto
+        grep = auto

@@ -1,0 +1,21 @@
+[user]
+	email = elvis@lnmpy.com
+	name = elvis
+[credential]
+    # set credential for keeping a week
+    helper = cache --timeout 604800
+[core]
+    editor = vim
+[alias]
+    st = status
+    ci = commit -v
+[sequence]
+    editor = vim
+[merge]
+	tool = vimdiff
+[color]
+    status = auto
+    branch = auto
+    interactive = auto
+    diff= auto
+    grep = auto
