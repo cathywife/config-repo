@@ -172,9 +172,9 @@ FullHost="\H"
 # red color when root user
 if [ "`whoami`" = "root" ]; then
     PROMP=\#
-    USER=$BRed$User@$FullHost$Color_off
+    USER=$BRed$User$Color_off$BBlack@$Color_off$Purple$FullHost$Color_off
 else
-    USER=$BBlack$User@$FullHost$Color_off
+    USER=$BBlack$User$Color_off$BBlack@$Color_off$Purple$FullHost$Color_off
     PROMP=\$
 fi
 
