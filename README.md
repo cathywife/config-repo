@@ -27,7 +27,7 @@ elvis-config
     echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
     .  ~/.bashrc
 
-    sudo ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` /etc/tmux.conf
+    ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` ~/.tmux.conf
 
     ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
 
