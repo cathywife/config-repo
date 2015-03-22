@@ -6,7 +6,7 @@ elvis-config
 
     REPO_NAME=repo
     ROOT_PATH=~/._sys
-    REPO_PATH=$ROOT_PATH/$REPO_NAME 
+    REPO_PATH=$ROOT_PATH/$REPO_NAME
     if [ ! -d $ROOT_PATH ];
     then
         mkdir -p $ROOT_PATH
@@ -21,8 +21,6 @@ elvis-config
 
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-    vim +PluginInstall +qall
-
     echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
     echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
     .  ~/.bashrc
@@ -30,6 +28,9 @@ elvis-config
     ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` ~/.tmux.conf
 
     ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
+
+    # process the vim plugins
+    vim +PluginInstall +qall
 
 
 简化的vimrc配置,可用于服务器中,偏大众化,不会影响到他人
