@@ -75,11 +75,6 @@ HostName 10.20.210.100
 Port 22
 User ubuntu
 
-Host myaliyun
-HostName 115.28.35.238
-Port 22
-User root
-
 Host git.datayes.com
 HostName git.datayes.com
 
@@ -89,155 +84,7 @@ Port 9002
 User elvis
 
 
-
-########### Azure-server ###########
-
-Host azure-qa-usermaster-1
-Hostname 42.159.198.43
-User root
-Port 63634
-ServerAliveInterval 10
-
-Host azure-qa-cp-1
-Hostname 42.159.198.43
-User root
-Port 56439
-ServerAliveInterval 10
-
-Host azure-qa-gateway-1
-Hostname 42.159.198.43
-User root
-Port 22
-ServerAliveInterval 10
-
-Host azure-qa-mobile-1
-Hostname 42.159.198.43
-User root
-Port 54129
-ServerAliveInterval 10
-
-Host azure-qa-msg-1
-Hostname 42.159.198.43
-User root
-Port 63781
-ServerAliveInterval 10
-
-Host azure-qa-mysql-1
-Hostname 42.159.198.43
-User root
-Port 61680
-ServerAliveInterval 10
-
-Host azure-qa-rabbitmq-1
-Hostname 42.159.198.43
-User root
-Port 51063
-ServerAliveInterval 10
-
-Host azure-qa-redis-1
-Hostname 42.159.198.43
-User root
-Port 61196
-ServerAliveInterval 10
-
-Host azure-qa-redis-2
-Hostname 42.159.198.43
-User root
-Port 61375
-ServerAliveInterval 10
-
-Host azure-qa-statsd-1
-Hostname 42.159.198.43
-User root
-Port 61256
-ServerAliveInterval 10
-
-Host azure-qa-statsd-2
-Hostname 42.159.198.43
-User root
-Port 49706
-ServerAliveInterval 10
-
-Host azure-qa-static-1
-Hostname 42.159.198.43
-User root
-Port 55484
-ServerAliveInterval 10
-
-Host azure-qa-s3-1
-Hostname 42.159.198.43
-User datayes
-Port 55022
-ServerAliveInterval 10
-
-
 ########### Aliyun-server ###########
-
-Host aliyun-qa-cp01
-Hostname 10.139.37.29
-User root
-Port 22
-
-Host aliyun-qa-gateway01
-Hostname 10.139.39.163
-User root
-Port 22
-
-Host aliyun-qa-msg01
-Hostname 10.253.4.15
-User root
-Port 22
-
-Host aliyun-qa-mobile01
-Hostname 10.139.35.127
-User root
-Port 22
-
-Host aliyun-qa-mysql01
-Hostname 10.139.37.157
-User root
-Port 22
-
-Host aliyun-qa-static01
-Hostname 10.139.36.46
-User root
-Port 22
-
-Host aliyun-qa-rabbitmq01
-Hostname 10.253.0.233
-User root
-Port 22
-
-Host aliyun-qa-s301
-Hostname 10.253.4.36
-User root
-Port 22
-
-Host aliyun-qa-redis01
-Hostname 10.253.5.191
-User root
-Port 22
-
-Host aliyun-qa-redis02
-Hostname 10.253.5.152
-User root
-Port 22
-
-Host aliyun-qa-usermaster01
-Hostname 10.253.6.188
-User root
-Port 22
-
-Host aliyun-qa-workflow01
-Hostname 10.253.5.69
-User root
-Port 22
-
-Host aliyun-qa-statsd01
-Hostname 10.139.35.158
-User root
-Port 22
-
 Host aliyun-ironman01
 Hostname 10.139.39.244
 User root
@@ -250,5 +97,10 @@ Port 22
 
 Host vpc-office
 Hostname vpc-dev.datayes.com
+User xiaofeng.hong
+Port 22
+
+Host icare01
+Hostname icare01.datayes.com
 User xiaofeng.hong
 Port 22

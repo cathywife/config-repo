@@ -13,12 +13,6 @@ alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir="log" --exclude
 
 ################ custom aliases ################
 
-# svn alias
-alias up='svn up '
-alias st='svn st '
-alias ci='svn commit '
-alias sl='svn log -l 10'
-
 # git alias
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
@@ -48,6 +42,9 @@ alias flake8="flake8 --ignore=E501,E265 "
 # alias json for pretty output
 alias json="python -mjson.tool"
 
+# alias http for adding default args
+alias http="http --print HhBb "
+
 # extract function
 extract () {
     if [ -f $1 ] ; then
@@ -69,6 +66,29 @@ extract () {
          echo "'$1' is not a valid file"
      fi
 }
+
+# new python virtualenv
+venv () {
+    if [ $# == 0 ]
+    then
+        ENV_ROOT=~/.venv
+    else
+        ENV_ROOT=$1
+    fi
+    if [ -d $ENV_ROOT ]
+    then
+        . $ENV_ROOT/bin/activate
+    else
+        virtualenv $ENV_ROOT
+        sed  -i  "s/default=.*pypi.python.org.*,/default='http:\/\/pypi.douban.com\/simple\/',/" $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/install.py $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/search.py
+        unlink $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/install.pyc
+        unlink $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/search.pyc
+        . $ENV_ROOT/bin/activate
+        echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy"
+    fi
+}
+alias ev=". ~/.venv/bin/activate"
+
 
 
 ################ custom  variables ################
