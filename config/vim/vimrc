@@ -132,7 +132,7 @@ vmap <leader>/ y/<C-R>"<CR>
 vmap <leader>e y<ESC>:! <C-R>"
 
 " quick run current line
-nmap <leader>e <ESC>:exec ':!'.getline('.')<CR>
+nmap <leader>e <ESC>:$!
 
 " qucick delete tail space
 nmap <leader>s <ESC>:FixWhitespace<CR>
@@ -173,7 +173,7 @@ vmap <F4> <ESC><leader>ci<CR>
 " Add author info
 " map <F6> <ESC>:w<ESC><CR>:call InfoTitle()<CR>
 " Rediect the command to current window
-map <F6> <ESC>:$!
+nmap <F6> <ESC>:exec ':!'.getline('.')<CR>
 " Toggle TaskList
 nmap <F7> <ESC>:TaskList<CR>
 imap <F7> <ESC>:TaskList<CR>
