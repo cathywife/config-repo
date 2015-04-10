@@ -128,11 +128,14 @@ au InsertLeave * if &paste == 1|set nopaste |endif
 vmap // y/<C-R>"<CR>
 vmap <leader>/ y/<C-R>"<CR>
 
-" quick run in visual-mode
 vmap <leader>e y<ESC>:! <C-R>"
+nmap <leader>r <ESC>:$!
 
-" quick run current line
-nmap <leader>e <ESC>:$!
+" quick run
+nmap <leader>e <ESC>:exec ':!'.getline('.')<CR>
+vmap <leader>e y<ESC>:.! <C-R>"<CR>
+
+" Rediect the command to current window
 
 " qucick delete tail space
 nmap <leader>s <ESC>:FixWhitespace<CR>
@@ -145,6 +148,12 @@ let g:PyFlakeDisabledMessages = 'E266,E501'
 
 " qucick delete empty line
 nmap <leader>d <ESC>:g/^$/d<CR>
+
+" Add docxygen info (Currently Not Used)
+map <leader>x <ESC>:w<ESC><CR>:Dox<CR>
+
+" Add author info
+map <leader>i <ESC>:w<ESC><CR>:call InfoTitle()<CR>
 
 " switch buffer
 map <leader><SPACE> <ESC>:Unite file_rec<CR>
@@ -168,12 +177,9 @@ vmap <F3> <ESC>:TagbarToggle<CR>
 nmap <F4> <leader>ci<CR>
 imap <F4> <ESC><leader>ci<CR>
 vmap <F4> <ESC><leader>ci<CR>
-" Add docxygen info (Currently Not Used)
-" map <F6> <ESC>:w<ESC><CR>:Dox<CR>
-" Add author info
-" map <F6> <ESC>:w<ESC><CR>:call InfoTitle()<CR>
-" Rediect the command to current window
+" quick run current line
 nmap <F6> <ESC>:exec ':!'.getline('.')<CR>
+vmap <F6> y<ESC>:.! <C-R>"<CR>
 " Toggle TaskList
 nmap <F7> <ESC>:TaskList<CR>
 imap <F7> <ESC>:TaskList<CR>
