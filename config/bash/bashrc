@@ -80,11 +80,10 @@ venv () {
         . $ENV_ROOT/bin/activate
     else
         virtualenv $ENV_ROOT
-        sed  -i  "s/default=.*pypi.python.org.*,/default='http:\/\/pypi.douban.com\/simple\/',/" $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/install.py $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/search.py
-        unlink $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/install.pyc
-        unlink $ENV_ROOT/lib/python2.7/site-packages/pip-1.1-py2.7.egg/pip/commands/search.pyc
+        find $ENV_ROOT/lib/python2.7/site-packages/pip* -name *.py | xargs -i sed  -i  "s/default=.*pypi.python.org.*,/default='http:\/\/pypi.douban.com\/simple\/',/" {}
+        find $ENV_ROOT/lib/python2.7/site-packages/pip* -name *.pyc -delete
         . $ENV_ROOT/bin/activate
-        echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy"
+        echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy gevent celery flask"
     fi
 }
 alias ev=". ~/.venv/bin/activate"
