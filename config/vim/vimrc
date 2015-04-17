@@ -35,6 +35,8 @@ Bundle 'lepture/vim-jinja'
 Bundle 'andviro/flake8-vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neomru.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/gitv'
 
 
 
@@ -89,7 +91,7 @@ filetype on " 侦测文件类型
 filetype plugin on " 载入类型插件
 filetype indent on " 载入文件类型对应的缩进文件
 set lazyredraw " 执行宏时不马上刷新屏幕
-set foldmethod=manual " 选择按照语法来进行折叠
+set nofoldenable " 禁用折叠
 
 " 格式或缩进之类的设置
 set smarttab " 设置智能的tab
