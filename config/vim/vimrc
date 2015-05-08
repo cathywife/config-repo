@@ -63,6 +63,8 @@ set hlsearch " 高亮搜索
 set showcmd " 在状态栏显示正在输入的命令
 set incsearch " 增量搜索
 set ignorecase " 搜索时忽略大小写
+let g:_ignore_case = 1
+" set nowrapscan " 搜索到文件末尾时，不再回绕到文件首
 set viminfo^=%  " 记录文件关闭时的信息
 set laststatus=2 " 总是显示状态栏
 let g:tlTokenList = ["FIXME", "TODO", "XXX", "NotImplemented"] " 将此文字作为高亮显示
@@ -120,7 +122,10 @@ nmap <leader>w :w!<CR>
 nmap <leader>b :b
 
 " cd to opened file
-map <leader>cd :cd %:p:h<CR>:pwd<CR>
+" map <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" toggle ignorecase
+map <leader>c :call ToggleIgnoreCase()<CR>
 
 " set paste, and leave paste while complete paste
 map <leader>p <Esc>:set paste<CR>i
@@ -372,8 +377,8 @@ function! AddMimeHeader()
         call append(1,"# -*- coding: utf-8 -*-")
         call append(2,"")
         call append(3,"")
-        call append(4,"# import pudb, sys")
-        call append(5,"# sys.excepthook = lambda t, v, tb: pudb.pm()")
+        " call append(4,"# import pudb, sys")
+        " call append(5,"# sys.excepthook = lambda t, v, tb: pudb.pm()")
     elseif &filetype=="sh"
         call append(0,"#!/usr/bin/env bash")
         call append(1,"")
@@ -486,43 +491,28 @@ function! InfoTitle4Python()
     call _AddTitle4Python()
 endfunction
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-""  以下命令未设置，可根据自己需求自定义设置
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" set foldmethod=indent " 选择按照语法来进行折叠
-" set nowrapscan " 搜索到文件末尾时，不再回绕到文件首
-" set list " 显示制表符
-" set listchars=eol:$,tab:>-,nbsp:_ " 设置制表符
-" set scrolloff=0 " 使用H,L时的偏移行数
-" set noequalalways " 取消当打开或关闭每个窗口时均设置同样大小的设置
-" set lbr " 设置自动断行,使得词不会被跨行中断
+function! ToggleIgnoreCase()
+    if g:_ignore_case==1
+        set noignorecase
+        let g:_ignore_case = 0
+    else
+        set ignorecase
+        let g:_ignore_case = 1
+    endif
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 ""  一些tricks，不用设置，但也常用，可提高使用效率
 """""""""""""""""""""""""""""""""""""""""""""""""
-" set ft=html " 当打开一个空文件时，可以手动设置文件类型，由此就会高亮缩进等
 " 在comman或visual模式下输入<C-R>"，则直接粘贴刚刚复制过的内容
 " g<C-G> " 在一个文本里计算单词数
 " set noma (non modifiable) " 防止修改
 " set ro (Read Only) " 只读保护
 " mksession " 生成一个Session文件 (默认是Session.vim)
-" Vu : 转换选中的行（小写）
-" VU : 转换选中的行（大写）
-" g~~ : 反向转换
-" '. : 跳回最后编辑的行 (超有用)
+" '. : 跳回最后编辑的行
 " `. : 同上，但是定位编辑点
 " <C-O> : 依次沿着你的跳转记录向回跳 (从最近的一次开始)
 " <C-I> : 依次沿着你的跳转记录向前跳
-" :b main : 前往含有main的buffer中 比如说 main.c
+" :b main : 前往含有main的buffer中 比如说 main.py
 " :e! : 打开未修改之前的文件
-" <C-X><C-F> :插入当前目录下的一个文件名到当前位置
-
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""
-""  临时的一些设置
-"""""""""""""""""""""""""""""""""""""""""""""""""
-" map <F9> <ESC>:w<CR><ESC>: make clean ; make

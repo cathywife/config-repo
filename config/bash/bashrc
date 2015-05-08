@@ -3,6 +3,11 @@
 # set ignore case
 set completion-ignore-case on
 
+# set chinese support for git log
+export LESSCHARSET=utf-8
+
+
+
 ################ some more ls aliases ################
 alias ll='ls -l'
 alias la='ls -A'
@@ -12,6 +17,14 @@ alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir="log" --exclude
 
 
 ################ custom aliases ################
+
+# docker alias
+# it's useful to change the docker.sock's mode
+# chmod +w /var/run/docker.sock
+alias dockerd='docker run -d --net=host --name="core" base-image '
+alias dockere='docker exec -it core /bin/bash '
+alias dockered='docker exec -d core '
+alias dockeri='docker run --rm=true -i -t base-image /bin/bash'
 
 # git alias
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"

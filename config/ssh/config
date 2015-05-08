@@ -74,6 +74,7 @@ Host ironman-server
 HostName 10.20.210.100
 Port 22
 User ubuntu
+IdentityFile="~/.ssh/id_rsa"
 
 Host git.datayes.com
 HostName git.datayes.com

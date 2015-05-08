@@ -19,3 +19,5 @@
     interactive = auto
     diff= auto
     grep = auto
+[push]
+	default = simple
