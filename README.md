@@ -29,6 +29,8 @@ elvis-config
 
     ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
 
+    ln -sf `readlink -f $REPO_PATH/config/bower/bowerrc` ~/.bowerrc
+
     # process the vim plugins
     vim +PluginInstall +qall
 
