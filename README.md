@@ -31,6 +31,8 @@ elvis-config
 
     ln -sf `readlink -f $REPO_PATH/config/bower/bowerrc` ~/.bowerrc
 
+    ln -sf `readlink -f $REPO_PATH/config/npm/npmrc` ~/.npmrc
+
     # process the vim plugins
     vim +PluginInstall +qall
 
