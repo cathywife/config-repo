@@ -6,8 +6,6 @@ set completion-ignore-case on
 # set chinese support for git log
 export LESSCHARSET=utf-8
 
-
-
 ################ some more ls aliases ################
 alias ll='ls -l'
 alias la='ls -A'
@@ -100,8 +98,7 @@ venv () {
         echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy MySQL-python gevent celery flask gunicorn"
     fi
 }
-alias ev=". ~/.venv/bin/activate"
-
+alias cdvenv="cd ~/.venv/lib/python2.7/site-packages/"
 
 
 ################ custom  variables ################
