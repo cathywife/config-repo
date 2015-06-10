@@ -28,6 +28,7 @@ alias dockeri='docker run --rm=true -i -t base-image /bin/bash'
 
 # git alias
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl2="git log --pretty=oneline --abbrev-commit --graph --decorate"
 
 # change dirs
 alias cds="cd $ROOT_PATH "
