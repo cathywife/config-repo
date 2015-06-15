@@ -37,6 +37,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neomru.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
+Bundle 'godlygeek/tabular'
 
 
 
@@ -146,6 +147,9 @@ vmap <leader>e y<ESC>:.! <C-R>"<CR>
 
 " qucick delete tail space
 nmap <leader>s <ESC>:FixWhitespace<CR>
+
+" tabular with the =
+vmap <leader>= <ESC>:Tab /=<CR>
 
 " run flake8 for python code
 nmap <leader>f <ESC>:PyFlake<CR>
