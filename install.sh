@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -x
+
 REPO_NAME=repo
 ROOT_PATH=${HOME}/._sys
 REPO_PATH=$ROOT_PATH/$REPO_NAME
@@ -29,9 +33,12 @@ if [ `uname` != 'Linux' ]
 then
     ln -sf ~/.bashrc ~/.bash_profile
 fi
+
 echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
 echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
 .  ~/.bashrc
+
+set +x
 
 # process the vim plugins
 vim +PluginInstall +qall

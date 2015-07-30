@@ -6,6 +6,7 @@ elvis-config
 
     wget https://raw.githubusercontent.com/elvis-macak/config-repo/master/install.sh
     sh install.sh
+    . ~/.bashrc
 
 
 简化的vimrc配置,可用于服务器中,偏大众化,不会影响到他人
