@@ -1,3 +1,32 @@
+################ custom  variables ################
+ROOT_PATH=${HOME}/._sys
+export EDITOR=vim
+export HISTTIMEFORMAT="%F %T `whoami` "
+
+
+if [ `uname` == 'Linux' ]
+then
+    # Linux here
+    HostName="EM-Linux"
+    TERM=xterm-256color
+    if [ -z $JAVA_HOME ]
+    then
+        export PATH=$JAVA_HOME/bin:$ROOT_PATH/bin:$PATH
+        export LIBRARY_PATH=$LIBRARY_PATH:$ROOT_PATH/lib
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOT_PATH/lib
+    fi
+else
+    # Mac Darwin here
+    HostName="EM-Mac"
+    source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+    export ANDROID_HOME=/Library/Java/android-sdk-macosx
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+        . `brew --prefix`/etc/bash_completion
+    fi
+    alias ls='ls -G'
+fi
+
+
 ################ custom bash setting ################
 
 # set ignore case
@@ -40,7 +69,8 @@ alias mysql='mysql --default-character-set=utf8 -A --prompt="\d>\_" '
 alias pyshare='python -m SimpleHTTPServer 9001 '
 
 # shortcut for du
-alias dumh="du --max-depth=1 -h "
+# alias dumh="du --max-depth=1 -h "
+alias dumh="du -d 1 -h "
 
 # alias tmux
 alias tmux='tmux -2 '
@@ -92,24 +122,12 @@ venv () {
         . $ENV_ROOT/bin/activate
     else
         virtualenv $ENV_ROOT
-        find $ENV_ROOT/lib/python2.7/site-packages/pip* -name "*.py" | xargs -i sed  -i  "s/default=.*pypi.python.org.*,/default='http:\/\/pypi.douban.com\/simple\/',/" {}
-        find $ENV_ROOT/lib/python2.7/site-packages/pip* -name "*.pyc" -delete
         . $ENV_ROOT/bin/activate
         echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy MySQL-python gevent celery flask gunicorn"
     fi
 }
 alias cdvenv="cd ~/.venv/lib/python2.7/site-packages/"
 
-
-################ custom  variables ################
-EDITOR=vim
-TERM=xterm-256color
-ROOT_PATH=/home/elvis/._sys
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ROOT_PATH/lib
-export LIBRARY_PATH=$LIBRARY_PATH:$ROOT_PATH/lib
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;31m\]\w\[\033[00m\]\$ '
-export PATH=$JAVA_HOME/bin:$ROOT_PATH/bin:$PATH
-export HISTTIMEFORMAT="%F %T `whoami` "
 
 
 ################ custom BASH PS1 prompt ################
@@ -198,13 +216,12 @@ User="\u"
 Host="\h"
 FullHost="\H"
 
-
 # red color when root user
 if [ "`whoami`" = "root" ]; then
     PROMP=\#
-    USER=$BRed$User$Color_off$BBlack@$Color_off$Purple$FullHost$Color_off
+    USER=$BRed$User$Color_off$BBlack@$Color_off$Purple$HostName$Color_off
 else
-    USER=$BBlack$User$Color_off$BBlack@$Color_off$Purple$FullHost$Color_off
+    USER=$BBlack$User$Color_off$BBlack@$Color_off$Purple$HostName$Color_off
     PROMP=\$
 fi
 

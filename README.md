@@ -4,37 +4,8 @@ elvis-config
 
 个人的配置文件
 
-    REPO_NAME=repo
-    ROOT_PATH=~/._sys
-    REPO_PATH=$ROOT_PATH/$REPO_NAME
-    if [ ! -d $ROOT_PATH ];
-    then
-        mkdir -p $ROOT_PATH
-    fi
-
-    cd $ROOT_PATH
-
-    git clone https://github.com/elvis-macak/config-repo $REPO_NAME
-
-    ln -sf `readlink -f $REPO_PATH/config/vim` ~/.vim
-    ln -sf `readlink -f $REPO_PATH/config/vim/vimrc` ~/.vimrc
-
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-    echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
-    echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
-    .  ~/.bashrc
-
-    ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` ~/.tmux.conf
-
-    ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
-
-    ln -sf `readlink -f $REPO_PATH/config/bower/bowerrc` ~/.bowerrc
-
-    ln -sf `readlink -f $REPO_PATH/config/npm/npmrc` ~/.npmrc
-
-    # process the vim plugins
-    vim +PluginInstall +qall
+    wget https://raw.githubusercontent.com/elvis-macak/config-repo/master/install.sh
+    sh install.sh
 
 
 简化的vimrc配置,可用于服务器中,偏大众化,不会影响到他人
