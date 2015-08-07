@@ -18,14 +18,12 @@ Vagrant.configure(2) do |config|
     sudo sed -i '/deb-src/d' /etc/apt/sources.list
     sudo sed -i 's/archive.ubuntu.com/mirrors.163.com/' /etc/apt/sources.list
     sudo sed -i 's/security.ubuntu.com/mirrors.163.com/' /etc/apt/sources.list
-    curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
     sudo apt-get update
 
     sudo apt-get install -y vim git tmux exuberant-ctags python-virtualenv python-pip bpython httpie
     sudo apt-get install -y libssl-dev libpython-dev libmysqlclient-dev libffi-dev
-    sudo apt-get install -y nodejs npm
 
-    # wget https://raw.githubusercontent.com/elvis-macak/config-repo/master/install.sh
+    wget https://raw.githubusercontent.com/elvis-macak/config-repo/master/install.sh
     # sh install.sh
   SHELL
 
