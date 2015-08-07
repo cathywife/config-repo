@@ -7,7 +7,7 @@ export HISTTIMEFORMAT="%F %T `whoami` "
 if [ `uname` == 'Linux' ]
 then
     # Linux here
-    HostName="EM-Linux"
+    DefaultHostName="EM-Linux"
     TERM=xterm-256color
     if [ -z $JAVA_HOME ]
     then
@@ -17,7 +17,7 @@ then
     fi
 else
     # Mac Darwin here
-    HostName="EM-Mac"
+    DefaultHostName="EM-Mac"
     source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
     export ANDROID_HOME=/Library/Java/android-sdk-macosx
     if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -25,6 +25,12 @@ else
     fi
     alias ls='ls -G'
 fi
+
+if [ -z "$HostName" ]
+then
+    HostName=$DefaultHostName
+fi
+
 
 
 ################ custom bash setting ################

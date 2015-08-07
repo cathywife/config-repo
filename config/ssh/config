@@ -4,3 +4,7 @@ UserKnownHostsFile /dev/null
 StrictHostKeyChecking no
 # 保持TCP长链接
 TCPKeepAlive yes
+
+Host vagrant
+    HostName 192.168.200.120
+    User vagrant
