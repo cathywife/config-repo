@@ -4,6 +4,12 @@ UserKnownHostsFile /dev/null
 StrictHostKeyChecking no
 # 保持TCP长链接
 TCPKeepAlive yes
+# 持久化链接
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPersist 7200
+# Agent共享private-key
+ForwardAgent yes
 
 Host vagrant
     HostName 192.168.200.120
