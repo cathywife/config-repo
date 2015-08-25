@@ -38,6 +38,9 @@ Bundle 'Shougo/neomru.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
 Bundle 'godlygeek/tabular'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'sjl/badwolf'
 
 
 
@@ -57,7 +60,6 @@ filetype plugin indent on    " required
 ""  basic settings（只有这段才有中文注释）
 """""""""""""""""""""""""""""""""""""""""""""""""
 set number " 显示行号
-set background=dark " 背景颜色为深色
 set ruler " 显示光标位置
 set showmatch " 高亮显示匹配括号
 set hlsearch " 高亮搜索
@@ -89,7 +91,8 @@ set matchtime=2 " 延迟0.2s显示括号
 syntax enable " 语法高亮,这个默认是读取syntax.vim
 syntax on " 语法高亮,采用缺省值
 set confirm  " 退出未保存文件时提示
-color ron  " 颜色主题,有很多种,这里我选择颜色比较暗的
+" set background=dark " 背景颜色为深色
+color badwolf " 颜色主题,有很多种,这里我选择颜色比较暗的
 filetype on " 侦测文件类型
 filetype plugin on " 载入类型插件
 filetype indent on " 载入文件类型对应的缩进文件
@@ -106,8 +109,15 @@ set tabstop=4 " tab的字符长度为4
 set shiftwidth=4 " 自动缩进长度为4
 set shiftround " 使用<<和>>时依据shiftwidth的长度设置
 
-highlight Pmenu    guibg=darkgrey  guifg=black " 代码提示框的颜色设置，普通选项的颜色
-highlight PmenuSel guibg=lightgrey guifg=black " 代码提示框的颜色设置，选中选项的颜色
+" 配置indent_guide的颜色
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
+" 代码提示框的颜色设置，普通选项的颜色
+highlight Pmenu    guibg=darkgrey  guifg=black
+" 代码提示框的颜色设置，选中选项的颜色
+highlight PmenuSel guibg=lightgrey guifg=black
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -251,11 +261,9 @@ au FileType c setlocal omnifunc=ccomplete#Complete
 
 " overwrite default syntax
 au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
 au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
-au FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-au FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType html,htmldjango,xhtml,haml,jade setlocal tabstop=2 shiftwidth=2 softtabstop=2
+au FileType sass,scss,css,less setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " set for the specified syntax
 au BufNewFile,BufRead *.yuml set filetype=yuml
