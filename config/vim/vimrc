@@ -70,7 +70,7 @@ let g:_ignore_case = 1
 " set nowrapscan " 搜索到文件末尾时，不再回绕到文件首
 set viminfo^=%  " 记录文件关闭时的信息
 set laststatus=2 " 总是显示状态栏
-let g:tlTokenList = ["FIXME", "TODO", "XXX", "NotImplemented"] " 将此文字作为高亮显示
+let g:tlTokenList = ["FIXME", "TODO", "XXX", "NotImplemented", "NOTE"] " 将此文字作为高亮显示
 set history=200 " 设置命令历史大小
 set wildmenu " 打开Wild Menu
 set wildmode=longest:longest,full " 设置Wild Menu的匹配方式
