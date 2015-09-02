@@ -8,7 +8,15 @@
 
 let g:Author="Elvis"
 let g:Email="elvis@lnmpy.com && xiaofeng.hong@datayes.com"
-let g:Company="Datayes.Inc, Shanghai"
+let g:Company="Glow.Inc, Shanghai"
+let g:startify_custom_header = [
+    \ '       [F1] open vimrc        [F2] NerdTree      [F3] TagBar         [F4] Comment',
+    \ '       [F5] RunScript         [F6] RunLine       [F7] TaskList       [F8] MarkList',
+    \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> Unite',
+    \ '       <leader>d ClearWhiteLine                  <leader>c ToggleCase',
+    \ '       <leader>e RunCurrentLine                  <leader>p PasteMode',
+    \ ]
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 ""  basic settings（只有这段才有中文注释）
@@ -41,6 +49,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/badwolf'
+Bundle 'mhinz/vim-startify'
 
 
 
@@ -251,7 +260,6 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |   exe "normal!
 au BufNewFile,BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.wsgi set filetype=python
-au BufNewFile,BufRead *.less set filetype=css
 
 " Enable omni completion.
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
