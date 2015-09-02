@@ -46,7 +46,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias l.='ls -d .*'
-alias grep='grep --color=auto --exclude-dir=".svn" --exclude-dir="log" --exclude=*.o --exclude=*.swp '
+alias grep='grep --color=auto --exclude=*.o --exclude=*.swp --exclude=*.pyc '
 
 
 ################ custom aliases ################
