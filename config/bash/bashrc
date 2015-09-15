@@ -47,6 +47,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias l.='ls -d .*'
 alias grep='grep --color=auto --exclude=*.o --exclude=*.swp --exclude=*.pyc '
+alias grep-py='grep --color=auto --inlcude=*.py '
+alias grep-js='grep --color=auto --inlcude=*.js '
+alias grep-jade='grep --color=auto --inlcude=*.jade '
 
 
 ################ custom aliases ################

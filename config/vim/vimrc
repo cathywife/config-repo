@@ -175,7 +175,7 @@ vmap <leader>= <ESC>:Tab /=<CR>
 nmap <leader>f <ESC>:PyFlake<CR>
 vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
 let g:PyFlakeCheckers = 'pep8'
-let g:PyFlakeDisabledMessages = 'E266,E501'
+let g:PyFlakeDisabledMessages = 'E266,E501,E702'
 
 " qucick delete empty line
 nmap <leader>d <ESC>:g/^$/d<CR>
