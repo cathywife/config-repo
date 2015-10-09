@@ -76,6 +76,10 @@ alias mysql='mysql --default-character-set=utf8 -A --prompt="\d>\_" '
 
 # python share
 alias pyshare='python -m SimpleHTTPServer 9001 '
+alias pyshare2='python -m SimpleHTTPServer 9002 '
+alias pyshare3='python -m SimpleHTTPServer 9003 '
+alias pyshare4='python -m SimpleHTTPServer 9004 '
+alias pyshare5='python -m SimpleHTTPServer 9005 '
 
 # shortcut for du
 # alias dumh="du --max-depth=1 -h "
