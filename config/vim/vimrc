@@ -50,6 +50,7 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/badwolf'
 Bundle 'mhinz/vim-startify'
+Bundle 'Shougo/vimproc.vim'
 
 
 
@@ -187,7 +188,7 @@ map <leader>x <ESC>:w<ESC><CR>:Dox<CR>
 map <leader>i <ESC>:w<ESC><CR>:call InfoTitle()<CR>
 
 " switch buffer
-map <leader><SPACE> <ESC>:Unite file_rec<CR>
+map <leader><SPACE> <ESC>:Unite file_rec/git<CR>
 map <SPACE> <ESC>:Unite buffer<CR>
 
 " remap the default keys
