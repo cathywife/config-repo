@@ -70,6 +70,8 @@ filetype plugin indent on    " required
 ""  basic settings（只有这段才有中文注释）
 """""""""""""""""""""""""""""""""""""""""""""""""
 set number " 显示行号
+" set cursorline " 显示列
+" set cursorcolumn  " 显示列
 set ruler " 显示光标位置
 set showmatch " 高亮显示匹配括号
 set hlsearch " 高亮搜索
@@ -118,6 +120,7 @@ set softtabstop=4 " 编辑时执行<tab>或<BackSpace>的时候,把<tab>作为�
 set tabstop=4 " tab的字符长度为4
 set shiftwidth=4 " 自动缩进长度为4
 set shiftround " 使用<<和>>时依据shiftwidth的长度设置
+let &colorcolumn="80,".join(range(120,999),",")  " 120列颜色变化
 
 " 配置indent_guide的颜色
 let g:indent_guides_auto_colors = 0
@@ -130,6 +133,8 @@ highlight Pmenu    guibg=darkgrey  guifg=black
 " 代码提示框的颜色设置，选中选项的颜色
 highlight PmenuSel guibg=lightgrey guifg=black
 
+" hi CursorLine ctermbg=129
+" hi CursorColumn ctermbg=129
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 ""  key bindings
@@ -538,3 +543,4 @@ endfunction
 " <C-I> : 依次沿着你的跳转记录向前跳
 " :b main : 前往含有main的buffer中 比如说 main.py
 " :e! : 打开未修改之前的文件
+"
