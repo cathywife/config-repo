@@ -22,6 +22,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ln -sf `readlink -f $REPO_PATH/config/tmux/tmux.conf` ~/.tmux.conf
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 ln -sf `readlink -f $REPO_PATH/config/git/gitconfig` ~/.gitconfig
 
 ln -sf `readlink -f $REPO_PATH/config/bower/bowerrc` ~/.bowerrc

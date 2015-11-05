@@ -12,7 +12,7 @@ let g:Company="Glow.Inc, Shanghai"
 let g:startify_custom_header = [
     \ '       [F1] open vimrc        [F2] NerdTree      [F3] TagBar         [F4] Comment',
     \ '       [F5] RunScript         [F6] RunLine       [F7] TaskList       [F8] MarkList',
-    \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> Unite',
+    \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> UniteWithCurrentDir',
     \ '       <leader>d ClearWhiteLine                  <leader>c ToggleCase',
     \ '       <leader>e RunCurrentLine                  <leader>p PasteMode',
     \ ]
@@ -187,17 +187,17 @@ let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
 nmap <leader>d <ESC>:g/^$/d<CR>
 
 " Add docxygen info (Currently Not Used)
-map <leader>x <ESC>:w<ESC><CR>:Dox<CR>
+" map <leader>x <ESC>:w<ESC><CR>:Dox<CR>
 
-" Add author info
-map <leader>i <ESC>:w<ESC><CR>:call InfoTitle()<CR>
-
-" switch buffer
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_length'])
-map <leader><SPACE> <ESC>:Unite -no-split -start-insert -buffer-name=files file_rec<CR>
-map <SPACE> <ESC>:Unite -no-split -buffer-name=buffer buffer<CR>
+map <leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async<CR>
+map <leader><leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async:..<CR>
+map <SPACE> <ESC>:UniteWithCurrentDir -no-split buffer<CR>
+map <leader>m <ESC>:Unite menu<CR>
+map <leader>r <ESC>:Unite register<CR>
+map <leader>g <ESC>:Unite -start-insert -no-split directory_mru<CR>
+
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
@@ -207,6 +207,29 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+let g:unite_source_menu_menus = {}
+
+let g:unite_source_menu_menus.file = {
+    \ 'description': '                             manage your files'
+    \}
+let g:unite_source_menu_menus.file.command_candidates = {
+        \'▷ grep_current_dir': 'UniteWithCurrentDir -start-insert -no-split grep:$buffer',
+        \'▷ grep_buffer': 'UniteWithCurrentDir -start-insert -no-split grep:.',
+        \'▷ filter_line': 'Unite -start-insert -no-split line',
+        \'▷ file_rec/git': 'UniteWithCurrentDir -no-split -start-insert file_rec/git',
+        \'▷ directory_mru': 'Unite -start-insert -no-split directory_mru',
+        \'▷ register': 'Unite register',
+    \}
+
+let g:unite_source_menu_menus.git = {
+    \ 'description': '                              git collections'
+    \}
+let g:unite_source_menu_menus.git.command_candidates = [
+    \['▷ git diff current file', 'Gdiff'],
+    \['▷ git last log', 'Glog'],
+    \['▷ git blame current file', 'Gblame'],
+    \]
 
 " remap the default keys
 map 0 ^
