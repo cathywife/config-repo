@@ -110,6 +110,7 @@ filetype plugin on " 载入类型插件
 filetype indent on " 载入文件类型对应的缩进文件
 set lazyredraw " 执行宏时不马上刷新屏幕
 set nofoldenable " 禁用折叠
+set clipboard=unnamed
 
 " 格式或缩进之类的设置
 set smarttab " 设置智能的tab
@@ -193,7 +194,7 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 map <SPACE> <ESC>:Unite -no-split buffer<CR>
 map <leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async<CR>
-map <leader><leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async:..<CR>
+map <leader><leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/git<CR>
 map <leader>m <ESC>:Unite menu<CR>
 map <leader>r <ESC>:Unite register<CR>
 map <leader>g <ESC>:Unite -start-insert -no-split directory_mru<CR>
@@ -214,8 +215,8 @@ let g:unite_source_menu_menus.file = {
     \ 'description': '                             manage your files'
     \}
 let g:unite_source_menu_menus.file.command_candidates = {
-        \'▷ grep_current_dir': 'UniteWithCurrentDir -start-insert -no-split grep:$buffer',
-        \'▷ grep_buffer': 'UniteWithCurrentDir -start-insert -no-split grep:.',
+        \'▷ grep_current_dir': 'Unite -start-insert -no-split grep:$buffer',
+        \'▷ grep_buffer': 'Unite -start-insert -no-split grep:.',
         \'▷ filter_line': 'Unite -start-insert -no-split line',
         \'▷ file_rec/git': 'UniteWithCurrentDir -no-split -start-insert file_rec/git',
         \'▷ directory_mru': 'Unite -start-insert -no-split directory_mru',

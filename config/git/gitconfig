@@ -1,6 +1,6 @@
 [user]
-	email = elvis@lnmpy.com
-	name = elvis
+    email = elvis@lnmpy.com
+    name = elvis
 [credential]
     # set credential for keeping a week
     helper = cache --timeout 604800
@@ -12,7 +12,7 @@
 [sequence]
     editor = vim
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [color]
     status = auto
     branch = auto
@@ -20,8 +20,8 @@
     diff= auto
     grep = auto
 [push]
-	default = simple
+    default = simple
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+    clean = git-lfs clean %f
+    smudge = git-lfs smudge %f
+    required = true
