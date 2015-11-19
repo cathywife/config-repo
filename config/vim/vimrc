@@ -51,7 +51,7 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'sjl/badwolf'
 Bundle 'mhinz/vim-startify'
 Bundle 'Shougo/vimproc.vim'
-
+Bundle 'davidhalter/jedi-vim'
 
 
 " Bundle ''
@@ -128,6 +128,12 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_enable_on_vim_startup = 1
+
+" 配置jedi-vim
+let g:jedi#show_call_signatures = "1"
+let g:jedi#completions_command = "<leader>j"
+autocmd FileType python setlocal completeopt-=preview
+
 
 " 代码提示框的颜色设置，普通选项的颜色
 highlight Pmenu    guibg=darkgrey  guifg=black
