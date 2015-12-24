@@ -184,10 +184,14 @@ let g:PyFlakeCheckers = 'pep8'
 let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
 
 let g:unite_source_history_yank_enable = 1
+let g:unite_prompt = '» '
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+let g:unite_source_rec_git_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
 map <SPACE> <ESC>:Unite -no-split buffer<CR>
-map <leader><SPACE> <ESC>:UniteWithProjectDir -no-split -start-insert file_rec/git<CR>
-map <leader><leader><SPACE> <ESC>:UniteWithProjectDir -no-split -start-insert file_rec/async:!<CR>
+map <leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async<CR>
+map <leader><leader><SPACE> <ESC>:UniteWithProjectDir -no-split -start-insert file_rec/async<CR>
 map <leader><leader>e <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/emma/server/emma/<CR>
 map <leader><leader>k <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/kaylee/server/kaylee/<CR>
 map <leader><leader>l <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/lexie/server/lexie/<CR>
@@ -225,7 +229,7 @@ let g:unite_source_menu_menus.file.command_candidates = {
         \'▷ grep_current_dir': 'Unite -start-insert -no-split grep:$buffer',
         \'▷ grep_buffer': 'Unite -start-insert -no-split grep:.',
         \'▷ filter_line': 'Unite -start-insert -no-split line',
-        \'▷ file_rec/git': 'UniteWithProjectDir -no-split -start-insert file_rec/git',
+        \'▷ file_rec/async': 'UniteWithProjectDir -no-split -start-insert file_rec/async',
         \'▷ directory_mru': 'Unite -start-insert -no-split directory_mru',
         \'▷ register': 'Unite register',
     \}
