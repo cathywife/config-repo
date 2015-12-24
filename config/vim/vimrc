@@ -12,7 +12,7 @@ let g:Company="Glow.Inc, Shanghai"
 let g:startify_custom_header = [
     \ '       [F1] open vimrc        [F2] NerdTree      [F3] TagBar         [F4] Comment',
     \ '       [F5] RunScript         [F6] RunLine       [F7] TaskList       [F8] MarkList',
-    \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> UniteWithCurrentDir',
+    \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> UniteWithProjectDir',
     \ '       <leader>d ClearWhiteLine                  <leader>c ToggleCase',
     \ '       <leader>e RunCurrentLine                  <leader>p PasteMode',
     \ ]
@@ -186,8 +186,14 @@ let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
 let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 map <SPACE> <ESC>:Unite -no-split buffer<CR>
-map <leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/async<CR>
-map <leader><leader><SPACE> <ESC>:UniteWithCurrentDir -no-split -start-insert file_rec/git<CR>
+map <leader><SPACE> <ESC>:UniteWithProjectDir -no-split -start-insert file_rec/git<CR>
+map <leader><leader><SPACE> <ESC>:UniteWithProjectDir -no-split -start-insert file_rec/async:!<CR>
+map <leader><leader>e <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/emma/server/emma/<CR>
+map <leader><leader>k <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/kaylee/server/kaylee/<CR>
+map <leader><leader>l <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/lexie/server/lexie/<CR>
+map <leader><leader>b <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/bryo/src/bryo/<CR>
+map <leader><leader>f <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/glow_forum/server/glow_forum/<CR>
+map <leader><leader>s <ESC>:Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/suso/<CR>
 map <leader>m <ESC>:Unite menu<CR>
 map <leader>r <ESC>:Unite register<CR>
 map <leader>g <ESC>:Unite -start-insert -no-split directory_mru<CR>
@@ -219,7 +225,7 @@ let g:unite_source_menu_menus.file.command_candidates = {
         \'▷ grep_current_dir': 'Unite -start-insert -no-split grep:$buffer',
         \'▷ grep_buffer': 'Unite -start-insert -no-split grep:.',
         \'▷ filter_line': 'Unite -start-insert -no-split line',
-        \'▷ file_rec/git': 'UniteWithCurrentDir -no-split -start-insert file_rec/git',
+        \'▷ file_rec/git': 'UniteWithProjectDir -no-split -start-insert file_rec/git',
         \'▷ directory_mru': 'Unite -start-insert -no-split directory_mru',
         \'▷ register': 'Unite register',
     \}
@@ -227,11 +233,24 @@ let g:unite_source_menu_menus.file.command_candidates = {
 let g:unite_source_menu_menus.git = {
     \ 'description': '                              git collections'
     \}
-let g:unite_source_menu_menus.git.command_candidates = [
-    \['▷ git diff current file', 'Gdiff'],
-    \['▷ git last log', 'Glog'],
-    \['▷ git blame current file', 'Gblame'],
-    \]
+let g:unite_source_menu_menus.git.command_candidates = {
+    \'▷ git diff current file': 'Gdiff',
+    \'▷ git last log': 'Glog',
+    \'▷ git blame current file': 'Gblame',
+    \}
+
+let g:unite_source_menu_menus.projects = {
+    \ 'description': '                              open projects'
+    \}
+
+let g:unite_source_menu_menus.projects.command_candidates = {
+    \'▷ emma': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/emma/server/emma/',
+    \'▷ kaylee': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/kaylee/server/kaylee/',
+    \'▷ lexie': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/lexie/server/lexie/',
+    \'▷ bryo': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/bryo/src/bryo/',
+    \'▷ glow_forum': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/glow_forum/server/glow_forum/',
+    \'▷ suso': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/suso/',
+    \}
 
 " remap the default keys
 map 0 ^
