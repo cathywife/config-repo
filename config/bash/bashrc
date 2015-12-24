@@ -70,6 +70,9 @@ alias gl2="git log --pretty=oneline --abbrev-commit --graph --decorate"
 alias cds="cd $ROOT_PATH "
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .4="cd ../../../.."
+alias .5="cd ../../../../.."
 
 # mysql login
 alias mysql='mysql --default-character-set=utf8 -A --prompt="\d>\_" '
@@ -99,6 +102,16 @@ alias json="python -mjson.tool"
 
 # alias http for adding default args
 alias http="http --print HhBb "
+
+# alias git pull for each sub dirs
+alias gpull='for d in $(ls); do pushd $d; git pull; popd; done'
+
+# alias mkdir
+alias mkdir='mkdir -pv'
+
+# alias md5, sha1
+alias md5='openssl md5'
+alias sha1='openssl sha1'
 
 # extract function
 extract () {
