@@ -40,7 +40,13 @@ echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
 echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
 .  ~/.bashrc
 
+if [ -f `which brew` ]; then
+    brew install tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
+fi
+
 set +x
+
+
 
 # process the vim plugins
 vim +PluginInstall +qall

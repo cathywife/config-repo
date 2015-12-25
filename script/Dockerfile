@@ -16,4 +16,3 @@ CMD /usr/bin/supervisord -n
 # docker build .
 # docker images
 # docker tag image_id base-image
-

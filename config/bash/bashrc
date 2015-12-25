@@ -4,6 +4,7 @@ export EDITOR=vim
 export HISTTIMEFORMAT="%F %T `whoami` "
 
 
+# variables based on the platform
 if [ `uname` == 'Linux' ]
 then
     # Linux here
@@ -26,11 +27,11 @@ else
     alias ls='ls -G'
 fi
 
+# set HostName for PS1
 if [ -z "$HostName" ]
 then
     HostName=$DefaultHostName
 fi
-
 
 
 ################ custom bash setting ################
@@ -41,32 +42,21 @@ set completion-ignore-case on
 # set chinese support for git log
 export LESSCHARSET=utf-8
 
-################ some more ls aliases ################
+################ some basisc aliases ################
+
+# ls
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias l.='ls -d .*'
+
+# grep
 alias grep='grep --color=auto --exclude=*.o --exclude=*.swp --exclude=*.pyc '
 alias grep-py='grep --color=auto --inlcude=*.py '
 alias grep-js='grep --color=auto --inlcude=*.js '
 alias grep-jade='grep --color=auto --inlcude=*.jade '
 
-
-################ custom aliases ################
-
-# docker alias
-# it's useful to change the docker.sock's mode
-# chmod +w /var/run/docker.sock
-alias dockerd='docker run -d --net=host --name="core" base-image '
-alias dockere='docker exec -it core /bin/bash '
-alias dockered='docker exec -d core '
-alias dockeri='docker run --rm=true -i -t base-image /bin/bash'
-
-# git alias
-alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gl2="git log --pretty=oneline --abbrev-commit --graph --decorate"
-
-# change dirs
+# cd
 alias cds="cd $ROOT_PATH "
 alias ..="cd .."
 alias ...="cd ../.."
@@ -74,8 +64,38 @@ alias ....="cd ../../.."
 alias .4="cd ../../../.."
 alias .5="cd ../../../../.."
 
-# mysql login
+# mysql
 alias mysql='mysql --default-character-set=utf8 -A --prompt="\d>\_" '
+
+# alias tmux
+alias tmux='tmux -2 '
+
+# alias http for adding default args
+alias http="http --print HhBb "
+
+# alias json for pretty output
+alias json="python -mjson.tool"
+
+# alias mkdir
+alias mkdir='mkdir -pv'
+
+# alias md5, sha1
+alias md5='openssl md5'
+alias sha1='openssl sha1'
+
+################ helpful aliases ################
+
+# docker
+# it's useful to change the docker.sock's mode
+# chmod +w /var/run/docker.sock
+alias dockerd='docker run -d --net=host --name="core" base-image '
+alias dockere='docker exec -it core /bin/bash '
+alias dockered='docker exec -d core '
+alias dockeri='docker run --rm=true -i -t base-image /bin/bash'
+
+# git
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl2="git log --pretty=oneline --abbrev-commit --graph --decorate"
 
 # python share
 alias pyshare='python -m SimpleHTTPServer 9001 '
@@ -88,30 +108,14 @@ alias pyshare5='python -m SimpleHTTPServer 9005 '
 # alias dumh="du --max-depth=1 -h "
 alias dumh="du -d 1 -h "
 
-# alias tmux
-alias tmux='tmux -2 '
-
 # make plantuml
 alias pu="java -jar $ROOT_PATH/repo/lib-code/lib/java/plantuml.jar  "
 
 # alias flake8
 alias flake8="flake8 --ignore=E501,E265 "
 
-# alias json for pretty output
-alias json="python -mjson.tool"
-
-# alias http for adding default args
-alias http="http --print HhBb "
-
 # alias git pull for each sub dirs
 alias gpull='for d in $(ls); do pushd $d; git pull; popd; done'
-
-# alias mkdir
-alias mkdir='mkdir -pv'
-
-# alias md5, sha1
-alias md5='openssl md5'
-alias sha1='openssl sha1'
 
 # extract function
 extract () {
@@ -153,7 +157,6 @@ venv () {
     fi
 }
 alias cdvenv="cd ~/.venv/lib/python2.7/site-packages/"
-
 
 
 ################ custom BASH PS1 prompt ################

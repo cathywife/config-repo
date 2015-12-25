@@ -1,15 +1,16 @@
 elvis-config
 ============
 
+> Still persist for bash, with customization, it's as strong as zsh
 
-个人的配置文件
+
+##Quick install
 
     wget https://raw.githubusercontent.com/elvis-macak/config-repo/master/install.sh
     sh install.sh
     . ~/.bashrc
 
-
-简化的vimrc配置,可用于服务器中,偏大众化,不会影响到他人
+## Simple vim config
 
     " basic setting
     syntax enable
@@ -45,7 +46,7 @@ elvis-config
     map <C-h> <C-W>h
     map <C-l> <C-W>l
 
-个人的git配置,主要是颜色高亮和一些默认工具的配置
+## Simple git config
 
     [user]
         email = elvis@lnmpy.com
