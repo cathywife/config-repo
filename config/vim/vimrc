@@ -452,6 +452,8 @@ function! CompileByFileType()
         map <F5> <ESC>:w<ESC><CR>:!javac % && java %
     elseif &filetype=="awk"
         map <F5> <ESC>:w<ESC><CR>:!awk -f %
+    elseif &filetype=="javascript"
+        map <F5> <ESC>:w<ESC><CR>:!node %
     elseif &filetype=="sh"
         map <F5> <ESC>:w<ESC><CR>:!./%
     endif
