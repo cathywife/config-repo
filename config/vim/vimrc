@@ -11,10 +11,11 @@ let g:Email="elvis@lnmpy.com && xiaofeng.hong@datayes.com"
 let g:Company="Glow.Inc, Shanghai"
 let g:startify_custom_header = [
     \ '       [F1] open vimrc        [F2] NerdTree      [F3] TagBar         [F4] Comment',
-    \ '       [F5] RunScript         [F6] RunLine       [F7] TaskList       [F8] MarkList',
+    \ '       [F5] RunScript         [F6] RunLine       [F7] Unite Menu     [F8] Gitv',
     \ '       <leader>s ClearTailWhiteSpace             <leader><SPACE> UniteWithProjectDir',
-    \ '       <leader>d ClearWhiteLine                  <leader>c ToggleCase',
+    \ '       <leader>m Unite Menu                      <leader>c ToggleCase',
     \ '       <leader>e RunCurrentLine                  <leader>p PasteMode',
+    \ '       m/ Show Marks',
     \ ]
 
 
@@ -29,28 +30,48 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Bundle 'scrooloose/nerdtree'
-Bundle 'Raimondi/delimitMate'
-Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
 Bundle 'bling/vim-airline'
-Bundle 'Valloric/MatchTagAlways'
-Bundle 'DataWraith/auto_mkdir'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'vim-scripts/Marks-Browser'
-Bundle 'vim-scripts/TaskList.vim'
-Bundle 'lepture/vim-jinja'
-Bundle 'andviro/flake8-vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neomru.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'godlygeek/tabular'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'sjl/badwolf'
-Bundle 'mhinz/vim-startify'
 Bundle 'Shougo/vimproc.vim'
+" git wrapper
+Bundle 'tpope/vim-fugitive'
+" auto complete the commas
+Bundle 'Raimondi/delimitMate'
+" colorful the matching commas
+Bundle 'kien/rainbow_parentheses.vim'
+" highligh the matching html/xml tags
+Bundle 'Valloric/MatchTagAlways'
+" auto create dir when saving files
+Bundle 'DataWraith/auto_mkdir'
+" show/delete trailing whitespace
+Bundle 'bronson/vim-trailing-whitespace'
+" show tasks
+Bundle 'vim-scripts/TaskList.vim'
+" flake check with python
+Bundle 'andviro/flake8-vim'
+" jshint check with js
+Bundle 'Shutnik/jshint2.vim'
+" show git commit history with indent
+Bundle 'gregsexton/gitv'
+" format the withc =
+Bundle 'godlygeek/tabular'
+" show indent of the code
+Bundle 'nathanaelkane/vim-indent-guides'
+" customise the start page
+Bundle 'mhinz/vim-startify'
+" show marks in the left
+Bundle 'kshenoy/vim-signature'
+
+" badwolf theme
+Bundle 'sjl/badwolf'
+
+" syntax
+Bundle 'digitaltoad/vim-jade'
+Bundle 'lepture/vim-jinja'
+
 
 
 " Bundle ''
@@ -183,6 +204,14 @@ vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
 let g:PyFlakeCheckers = 'pep8'
 let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
 
+" run jshint
+let jshint2_save = 1
+
+" mark conflict set confirmation
+let g:SignatureDeleteConfirmation = 1
+let g:SignaturePurgeConfirmation = 1
+
+" unite config
 let g:unite_source_history_yank_enable = 1
 let g:unite_prompt = '» '
 let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
@@ -215,9 +244,11 @@ endfunction
 let g:unite_source_menu_menus = {}
 
 let g:unite_source_menu_menus.current = {
-    \ 'description': '                          edit current file'
+    \ 'description': '                          show/edit current file'
     \}
 let g:unite_source_menu_menus.current.command_candidates = {
+        \'▷ show Tasks in this file': 'TaskList',
+        \'▷ show Marks in this file': 'SignatureListMarks',
         \'▷ delete empty line': 'g/^$/d',
         \'▷ add docxygen info': 'Dox',
     \}
@@ -238,6 +269,7 @@ let g:unite_source_menu_menus.git = {
     \ 'description': '                              git collections'
     \}
 let g:unite_source_menu_menus.git.command_candidates = {
+    \'▷ git status ': 'Gstatus',
     \'▷ git diff current file': 'Gdiff',
     \'▷ git last log': 'Glog',
     \'▷ git blame current file': 'Gblame',
@@ -278,13 +310,9 @@ vmap <F4> <ESC><leader>ci<CR>
 nmap <F6> <ESC>:exec ':!'.getline('.')<CR>
 vmap <F6> y<ESC>:.! <C-R>"<CR>
 " Toggle TaskList
-nmap <F7> <ESC>:TaskList<CR>
-imap <F7> <ESC>:TaskList<CR>
-vmap <F7> <ESC>:TaskList<CR>
-" Toggle MarksBrowser
-nmap <F8> <ESC>:MarksBrowser<CR>
-imap <F8> <ESC>:MarksBrowser<CR>
-vmap <F8> <ESC>:MarksBrowser<CR>
+nmap <F7> <ESC>:Unite menu<CR>
+" Show Gitv
+nmap <F8> <ESC>:Gitv<CR>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
