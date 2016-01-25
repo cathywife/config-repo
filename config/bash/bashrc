@@ -115,7 +115,7 @@ alias pu="java -jar $ROOT_PATH/repo/lib-code/lib/java/plantuml.jar  "
 alias flake8="flake8 --ignore=E501,E265 "
 
 # alias git pull for each sub dirs
-alias gpull='for d in $(ls); do pushd $d; git pull; popd; done'
+alias gpull='for d in $(echo */); do pushd $d; git pull; popd; done'
 
 # extract function
 extract () {

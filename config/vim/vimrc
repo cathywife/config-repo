@@ -65,6 +65,9 @@ Bundle 'mhinz/vim-startify'
 " show marks in the left
 Bundle 'kshenoy/vim-signature'
 
+" typescript syntax
+Bundle "leafgarland/typescript-vim"
+
 " badwolf theme
 Bundle 'sjl/badwolf'
 
@@ -405,6 +408,10 @@ let g:use_zen_complete_tag = 1
 " NerdTree settings
 let NERDTreeWinSize=20
 
+" set TypeScript fix window
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 " cscope settings
 if has("cscope") && executable("cscope")
   set csto=1
@@ -482,6 +489,8 @@ function! CompileByFileType()
         map <F5> <ESC>:w<ESC><CR>:!awk -f %
     elseif &filetype=="javascript"
         map <F5> <ESC>:w<ESC><CR>:!node %
+    elseif &filetype=="typescript"
+        map <F5> <ESC>:w<ESC><CR>:make
     elseif &filetype=="sh"
         map <F5> <ESC>:w<ESC><CR>:!./%
     endif
