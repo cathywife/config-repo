@@ -200,6 +200,7 @@ nmap <leader>s <ESC>:FixWhitespace<CR>
 
 " tabular with the =
 vmap <leader>= <ESC>:Tab /=<CR>
+" vmap <leader>| <ESC>:Tab /|<CR>
 
 " run flake8 for python code
 nmap <leader>f <ESC>:PyFlake<CR>
@@ -287,6 +288,7 @@ let g:unite_source_menu_menus.projects.command_candidates = {
     \'▷ kaylee': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/kaylee/server/kaylee/',
     \'▷ lexie': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/lexie/server/lexie/',
     \'▷ bryo': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/bryo/src/bryo/',
+    \'▷ noah': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/noah/src/noah/',
     \'▷ glow_forum': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/glow_forum/server/glow_forum/',
     \'▷ suso': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/suso/',
     \}
