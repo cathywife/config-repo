@@ -74,6 +74,7 @@ Bundle 'sjl/badwolf'
 " syntax
 Bundle 'digitaltoad/vim-jade'
 Bundle 'lepture/vim-jinja'
+Bundle 'keith/swift.vim'
 
 
 
