@@ -153,7 +153,7 @@ venv () {
     else
         virtualenv $ENV_ROOT
         . $ENV_ROOT/bin/activate
-        echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy MySQL-python gevent celery flask gunicorn"
+        echo "pip install --upgrade bpython ipython pudb httpie requests sqlalchemy MySQL-python gevent json-sempai celery flask gunicorn "
     fi
 }
 alias cdvenv="cd ~/.venv/lib/python2.7/site-packages/"

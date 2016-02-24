@@ -294,6 +294,14 @@ let g:unite_source_menu_menus.projects.command_candidates = {
     \'▷ suso': 'Unite -no-split -start-insert file_rec/async:/Users/elvis/Desktop/Glow/suso/',
     \}
 
+let g:unite_source_menu_menus.system = {
+    \ 'description': '                              system commands'
+    \}
+
+let g:unite_source_menu_menus.system.command_candidates = {
+    \'▷ clear unite cache': ':!rm -rf ~/.cache/unite',
+    \}
+
 " remap the default keys
 map 0 ^
 map j gj
