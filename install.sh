@@ -30,6 +30,8 @@ ln -sf `readlink -f $REPO_PATH/config/bower/bowerrc` ~/.bowerrc
 
 ln -sf `readlink -f $REPO_PATH/config/npm/npmrc` ~/.npmrc
 
+ln -sf `readlink -f $REPO_PATH/config/jshint/jshintrc` ~/.jshintrc
+
 
 if [ `uname` != 'Linux' ]
 then
