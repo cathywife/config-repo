@@ -64,6 +64,8 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'mhinz/vim-startify'
 " show marks in the left
 Bundle 'kshenoy/vim-signature'
+" orgmode
+Bundle 'jceb/vim-orgmode'
 
 " typescript syntax
 Bundle "leafgarland/typescript-vim"
