@@ -68,6 +68,8 @@ Bundle 'kshenoy/vim-signature'
 Bundle 'jceb/vim-orgmode'
 " nerdtree-git-plugin
 Bundle 'Xuyuanp/nerdtree-git-plugin'
+" gitgutter
+Bundle 'airblade/vim-gitgutter'
 
 " typescript syntax
 Bundle "leafgarland/typescript-vim"
