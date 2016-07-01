@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/user/bin/env bash
+
 
 set -x
 
@@ -12,6 +13,19 @@ then
 fi
 
 cd $ROOT_PATH
+
+if [ "$(uname)" == "Darwin" ]; then
+    OS="Mac"
+    if [ -f `which brew` ]; then
+        brew install coreutils tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
+    fi
+    alias readlink="greadlink"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    OS="Linux"
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    echo 'not support'
+    exit
+fi
 
 git clone https://github.com/elvis-macak/config-repo $REPO_NAME
 
@@ -32,8 +46,10 @@ ln -sf `readlink -f $REPO_PATH/config/npm/npmrc` ~/.npmrc
 
 ln -sf `readlink -f $REPO_PATH/config/jshint/jshintrc` ~/.jshintrc
 
+ln -sf `readlink -f $REPO_PATH/config/aws` ~/.aws
 
-if [ `uname` != 'Linux' ]
+
+if [ $OS == 'Mac' ]
 then
     ln -sf ~/.bashrc ~/.bash_profile
 fi
@@ -41,10 +57,6 @@ fi
 echo "ROOT_PATH=$ROOT_PATH" >> ~/.bashrc
 echo ".  $REPO_PATH/config/bash/bashrc" >> ~/.bashrc
 .  ~/.bashrc
-
-if [ -f `which brew` ]; then
-    brew install tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
-fi
 
 set +x
 
