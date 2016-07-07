@@ -17,7 +17,7 @@ cd $ROOT_PATH
 if [ "$(uname)" == "Darwin" ]; then
     OS="Mac"
     if [ -f `which brew` ]; then
-        brew install tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
+        brew install tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim 1>/dev/null &2>/dev/null
     fi
     alias readlink="greadlink"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -29,7 +29,7 @@ fi
 
 git clone https://github.com/elvis-macak/config-repo $REPO_NAME
 
-ln -sf `readlink -f $REPO_PATH/config/vim` ~/.vim
+unlink ~/.vim; ln -sf `readlink -f $REPO_PATH/config/vim` ~/.vim
 ln -sf `readlink -f $REPO_PATH/config/vim/vimrc` ~/.vimrc
 
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -46,7 +46,7 @@ ln -sf `readlink -f $REPO_PATH/config/npm/npmrc` ~/.npmrc
 
 ln -sf `readlink -f $REPO_PATH/config/jshint/jshintrc` ~/.jshintrc
 
-ln -sf `readlink -f $REPO_PATH/config/aws` ~/.aws
+mkdir ~/.aws && ln -sf `readlink -f $REPO_PATH/config/aws/credentials` ~/.aws/credentials
 
 ln -sf `readlink -f $REPO_PATH/config/flake8/flake8` ~/.config/flake8
 

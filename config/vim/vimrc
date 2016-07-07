@@ -207,9 +207,7 @@ vmap <leader>= <ESC>:Tab /=<CR>
 " vmap <leader>| <ESC>:Tab /|<CR>
 
 " run flake8 for python code
-nmap <leader>f <ESC>:PyFlakeToggle<CR>
-let g:PyFlakeCheckers = 'pep8'
-let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
+nmap <leader>f <ESC>:Errors<CR>
 
 " run jshint
 let jshint2_save = 1
@@ -370,6 +368,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |   exe "normal!
 au BufNewFile,BufRead *.pp set filetype=ruby
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.wsgi set filetype=python
+au BufNewFile,BufRead *.ts set filetype=typescript
 
 " Enable omni completion.
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -432,10 +431,6 @@ let g:use_zen_complete_tag = 1
 " NerdTree settings
 let NERDTreeWinSize=20
 
-" set TypeScript fix window
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
-
 " cscope settings
 if has("cscope") && executable("cscope")
   set csto=1
@@ -491,6 +486,16 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_typescript_checkers = ['tslint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 ""  functions settings
@@ -669,18 +674,3 @@ endfunction
 " :b main : 前往含有main的buffer中 比如说 main.py
 " :e! : 打开未修改之前的文件
 
-
-
-nmap <F9> <ESC>:w<ESC><CR>:!eslint %<CR>
-nmap <leader><F9> <ESC>:w<ESC><CR>:!eslint --fix %<CR>
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_javascript_checkers = ['eslint']
