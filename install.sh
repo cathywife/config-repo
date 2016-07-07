@@ -17,7 +17,7 @@ cd $ROOT_PATH
 if [ "$(uname)" == "Darwin" ]; then
     OS="Mac"
     if [ -f `which brew` ]; then
-        brew install coreutils tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
+        brew install tree ag git tmux wget transcrypt postgresql sqlite openssl node nmap ack vim
     fi
     alias readlink="greadlink"
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
