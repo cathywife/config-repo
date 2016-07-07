@@ -48,6 +48,8 @@ ln -sf `readlink -f $REPO_PATH/config/jshint/jshintrc` ~/.jshintrc
 
 ln -sf `readlink -f $REPO_PATH/config/aws` ~/.aws
 
+ln -sf `readlink -f $REPO_PATH/config/flake8/flake8` ~/.config/flake8
+
 
 if [ $OS == 'Mac' ]
 then
