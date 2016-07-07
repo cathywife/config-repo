@@ -212,8 +212,7 @@ vmap <leader>= <ESC>:Tab /=<CR>
 " vmap <leader>| <ESC>:Tab /|<CR>
 
 " run flake8 for python code
-nmap <leader>f <ESC>:PyFlake<CR>
-vmap <leader>f <ESC>:'<,'> PyFlakeAuto<CR>
+nmap <leader>f <ESC>:PyFlakeToggle<CR>
 let g:PyFlakeCheckers = 'pep8'
 let g:PyFlakeDisabledMessages = 'E266,E501,E702,E731'
 
@@ -674,3 +673,8 @@ endfunction
 " <C-I> : 依次沿着你的跳转记录向前跳
 " :b main : 前往含有main的buffer中 比如说 main.py
 " :e! : 打开未修改之前的文件
+
+
+
+nmap <F9> <ESC>:w<ESC><CR>:!eslint %<CR>
+nmap <leader><F9> <ESC>:w<ESC><CR>:!eslint --fix %<CR>
