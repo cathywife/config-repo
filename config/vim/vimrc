@@ -532,6 +532,8 @@ function! CompileByFileType()
         map <F5> <ESC>:w<ESC><CR>:!node %
     elseif &filetype=="jade"
         map <F5> <ESC>:w<ESC><CR>:!jade %
+    elseif &filetype=="pug"
+        map <F5> <ESC>:w<ESC><CR>:!jade %
     elseif &filetype=="typescript"
         map <F5> <ESC>:w<ESC><CR>:make
     elseif &filetype=="sh"
