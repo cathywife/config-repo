@@ -535,7 +535,7 @@ function! CompileByFileType()
     elseif &filetype=="pug"
         map <F5> <ESC>:w<ESC><CR>:!jade %
     elseif &filetype=="typescript"
-        map <F5> <ESC>:w<ESC><CR>:make
+        map <F5> <ESC>:w<ESC><CR>:tsc %
     elseif &filetype=="sh"
         map <F5> <ESC>:w<ESC><CR>:!./%
     endif
